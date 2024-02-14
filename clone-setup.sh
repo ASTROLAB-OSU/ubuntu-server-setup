@@ -14,11 +14,11 @@ function includeDependencies() {
 }
 
 function setupNewHostname() {
-    echo -ne "Enter the new hostname (Currently $(hostname)):\n" >&3
+    echo -ne "Enter the new hostname (Currently $(hostname)):\n"
     read -r newName
     changeHostname "${newName}"
 
-    echo "Hostname is set to ${newName}. Requires reboot to take effect." >&3
+    echo "Hostname is set to ${newName}. Requires reboot to take effect." 
 }
 
 current_dir=$(getCurrentDir)
