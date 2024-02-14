@@ -175,6 +175,7 @@ function changeHostname() {
     
     sudo sed -i "s/${oldHostname}/$newHostname/g" /etc/hostname
     sudo sed -i "s/${oldHostname}/$newHostname/g" /etc/hosts
+    sudo hostnamectl set-hostname "${newHostname}"
 }
 
 # Disables annoying cloudinit prompt
