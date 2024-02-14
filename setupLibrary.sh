@@ -165,3 +165,25 @@ function revertSudoers() {
     sudo cp /etc/sudoers.bak /etc/sudoers
     sudo rm -rf /etc/sudoers.bak
 }
+
+# Changes the default hostname
+# Arguments:
+#   Account newHostname
+function changeHostname() {
+    local newHostname="${1}"
+    local oldHostname="$(hostname)"
+    
+    sudo sed -i "s/${oldHostname}/$newHostname/g" /etc/hostname
+    sudo sed -i "s/${oldHostname}/$newHostname/g" /etc/hosts
+}
+
+# Disables annoying cloudinit prompt
+function disableCloudInit() {
+    sudo touch /etc/cloud/cloud-init.disabled
+}
+
+# changes SSH server keys
+function changeSSHServerKeys() {
+    sudo rm /etc/ssh/ssh_host_*
+    sudo ssh-keygen -A
+}
